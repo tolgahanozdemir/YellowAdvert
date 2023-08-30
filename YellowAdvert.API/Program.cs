@@ -1,3 +1,4 @@
+using YellowAdvert.Business.DependencyResolver;
 using YellowAdvert.DataAccess.Abstract;
 using YellowAdvert.DataAccess.Concrete.EntityFramework;
 using YellowAdvert.Entities.Base;
@@ -10,7 +11,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+GenericDependencyResolver.ConfigureServices(builder.Services);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

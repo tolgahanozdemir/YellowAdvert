@@ -15,7 +15,9 @@ namespace YellowAdvert.Business.DependencyResolver
     {
         public static void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IEntityRepository<ModelBase>,EfEntityRepositoryBase<ModelBase, Context>();
+            services.AddScoped<ICategoryDal,EfCategoryDal>();
+            services.AddScoped<IProductAttributesDal,EfProductAttributesDal>();
+            services.AddScoped<IProductDal,EfProductDal>();
         }
     }
 }
