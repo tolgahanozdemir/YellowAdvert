@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -16,8 +17,8 @@ namespace YellowAdvert.Business.DependencyResolver
         public static void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<ICategoryDal,EfCategoryDal>();
-            services.AddScoped<IProductAttributesDal,EfProductAttributesDal>();
             services.AddScoped<IProductDal,EfProductDal>();
+            services.AddScoped<DbContext,YellowAdvertEfContext>();
         }
     }
 }
