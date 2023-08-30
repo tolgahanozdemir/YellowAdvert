@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33712.159
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YellowAdvert.Entities", "YellowAdvert.Entities\YellowAdvert.Entities.csproj", "{29891211-4E8D-4906-B711-8E2E3C3310EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YellowAdvert.Entities", "YellowAdvert.Entities\YellowAdvert.Entities.csproj", "{29891211-4E8D-4906-B711-8E2E3C3310EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YellowAdvert.DataAccess", "YellowAdvert.DataAccess\YellowAdvert.DataAccess.csproj", "{A99D535A-6710-49DC-A283-5C3744FBEB58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YellowAdvert.DataAccess", "YellowAdvert.DataAccess\YellowAdvert.DataAccess.csproj", "{A99D535A-6710-49DC-A283-5C3744FBEB58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YellowAdvert.Business", "YellowAdvert.Business\YellowAdvert.Business.csproj", "{95D57FA9-29FF-43BB-BB25-850A3919561D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YellowAdvert.API", "YellowAdvert.API\YellowAdvert.API.csproj", "{C63576C3-0B5C-4AB4-ADE4-7D32685DD879}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{A99D535A-6710-49DC-A283-5C3744FBEB58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A99D535A-6710-49DC-A283-5C3744FBEB58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A99D535A-6710-49DC-A283-5C3744FBEB58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95D57FA9-29FF-43BB-BB25-850A3919561D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95D57FA9-29FF-43BB-BB25-850A3919561D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95D57FA9-29FF-43BB-BB25-850A3919561D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95D57FA9-29FF-43BB-BB25-850A3919561D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C63576C3-0B5C-4AB4-ADE4-7D32685DD879}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C63576C3-0B5C-4AB4-ADE4-7D32685DD879}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C63576C3-0B5C-4AB4-ADE4-7D32685DD879}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C63576C3-0B5C-4AB4-ADE4-7D32685DD879}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
