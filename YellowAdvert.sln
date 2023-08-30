@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YellowAdvert.Entities", "Ye
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YellowAdvert.DataAccess", "YellowAdvert.DataAccess\YellowAdvert.DataAccess.csproj", "{A99D535A-6710-49DC-A283-5C3744FBEB58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YellowAdvert.Business", "YellowAdvert.Business\YellowAdvert.Business.csproj", "{95D57FA9-29FF-43BB-BB25-850A3919561D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YellowAdvert.Business", "YellowAdvert.Business\YellowAdvert.Business.csproj", "{95D57FA9-29FF-43BB-BB25-850A3919561D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YellowAdvert.API", "YellowAdvert.API\YellowAdvert.API.csproj", "{C63576C3-0B5C-4AB4-ADE4-7D32685DD879}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YellowAdvert.API", "YellowAdvert.API\YellowAdvert.API.csproj", "{C63576C3-0B5C-4AB4-ADE4-7D32685DD879}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
