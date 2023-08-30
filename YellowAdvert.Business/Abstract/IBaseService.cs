@@ -11,12 +11,12 @@ namespace YellowAdvert.Business.Abstract
 {
     public interface IBaseService<T> where T: ModelBase
     {
-        void Add(T entity);
-        void Update(T entity);
-        void Delete(Guid id);
-        T GetById(Guid id);
-        List<T> GetAll();
-        List<T> GetByCondition(Expression<Func<T,bool>> expression);
+        Task Add(T entity);
+        Task Update(T entity);
+        Task Delete(Guid id);
+        Task<T> GetById(Guid id);
+        Task<List<T>> GetAll();
+        Task<List<T>> GetByCondition(Expression<Func<T,bool>> expression);
 
     }
 }

@@ -15,32 +15,32 @@ namespace YellowAdvert.Business.Abstract
         private readonly IEntityRepository<T> _entityRepository;
         public BaseService(IEntityRepository<T> entityRepository)
         {
-            _entityRepository = entityRepository;
+            await _entityRepository = entityRepository;
         }
-        public virtual void Add(T entity)
+        public virtual async Task Add(T entity)
         {
-            _entityRepository.Add(entity);
+            await _entityRepository.Add(entity);
         }
-        public virtual void Update(T entity)
+        public virtual async Task Update(T entity)
         {
-            _entityRepository.Update(entity);
+            await _entityRepository.Update(entity);
         }
-        public virtual void Delete(Guid id)
+        public virtual async Task Delete(Guid id)
         {
-            //_entityRepository.SoftDelete(id);
-            
+            await _entityRepository.SoftDelete(id);
+
         }
-        public virtual T GetById(Guid id)
+        public virtual async Task<T> GetById(Guid id)
         {
-            return _entityRepository.GetById(id);
+            return await _entityRepository.GetById(id);
         }
-        public virtual List<T> GetAll()
+        public virtual async Task<List<T>> GetAll()
         {
-            return _entityRepository.GetAll();
+            return await _entityRepository.GetAll();
         }
-        public virtual List<T> GetByCondition(Expression<Func<T,bool>> expression)
+        public virtual async Task<List<T>> GetByCondition(Expression<Func<T,bool>> expression)
         {
-            return _entityRepository.GetAll(expression);
+            return await _entityRepository.GetAll(expression);
         }
 
     }
