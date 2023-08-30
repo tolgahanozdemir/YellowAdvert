@@ -5,12 +5,12 @@ namespace YellowAdvert.DataAccess.Abstract;
 
 public interface IEntityRepository<T> where T : ModelBase
 {
-    List<T> GetAll(Expression<Func<T, bool>> filter = null);
-    T Get(Expression<Func<T, bool>> filter);
-    T GetById(Guid id);
-    void Add(T entity);
-    void Update(T entity);
-    void Update(List<T> entities);
-    void PermanentDelete(T entity);
-    void SoftDelete(T entity);
+    Task<List<T>> GetAll();
+    Task<List<T>> Get(Expression<Func<T, bool>> filter);
+    Task<T> GetById(Guid id);
+    Task Add(T entity);
+    Task Update(T entity);
+    Task Update(List<T> entities);
+    Task PermanentDelete(Guid id);
+    Task SoftDelete(Guid id);
 }

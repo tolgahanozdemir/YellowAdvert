@@ -9,61 +9,67 @@ public class EfEntityRepositoryBase<T, TContext> : IEntityRepository<T>
         where T : ModelBase
         where TContext : DbContext, new()
 {
-    public void Add(T entity)
+    public async Task Add(T entity)
     {
         using (TContext context = new TContext())
         {
-            var addedEntity = context.Add(entity);
-            context.SaveChanges();
+            var addedEntity = await context.AddAsync(entity);
+            await context.SaveChangesAsync();
         }
     }
 
-    public void PermanentDelete(T entity)
+    public async Task PermanentDelete(Guid id)
     {
         using (TContext context = new TContext())
         {
-            var deletedEntity = context.Remove(entity);
-            deletedEntity.State = EntityState.Deleted;
-            context.SaveChanges();
+            var entity = await GetById(id);
+            if (entity != null)
+            {
+                var deletedEntity = context.Remove(entity);
+                deletedEntity.State = EntityState.Deleted;
+                await context.SaveChangesAsync();
+            }
         }
     }
-    public void SoftDelete(T entity)
+    public async Task SoftDelete(Guid id)
     {
         using (TContext context = new TContext())
         {
-            entity.Deleted = true;
-            context.SaveChanges();
-        }
-    }
-
-    public T Get(Expression<Func<T, bool>> filter)
-    {
-        using (TContext context = new TContext())
-        {
-            return context.Set<T>().SingleOrDefault(filter);
-        }
-    }
-
-    public List<T> GetAll(Expression<Func<T, bool>> filter = null)
-    {
-        using (TContext context = new TContext())
-        {
-            return filter == null
-                ? context.Set<T>().ToList()
-                : context.Set<T>().Where(filter).ToList();
+            var entity = await GetById(id);
+            if (entity != null)
+            {
+                entity.Deleted = true;
+                await context.SaveChangesAsync();
+            }
         }
     }
 
-    public void Update(T entity)
+    public async Task<List<T>> GetAll()
+    {
+        using (TContext context = new TContext())
+        {
+            return await context.Set<T>().ToListAsync();
+        }
+    }
+
+    public async Task<List<T>> Get(Expression<Func<T, bool>> filter)
+    {
+        using (TContext context = new TContext())
+        {
+            return await context.Set<T>().Where(filter).ToListAsync();
+        }
+    }
+
+    public async Task Update(T entity)
     {
         using (TContext context = new TContext())
         {
             var updatedEntity = context.Entry(entity);
             updatedEntity.State = EntityState.Modified;
-            context.SaveChanges();
+            await context.SaveChangesAsync();
         }
     }
-    public void Update(List<T> entities)
+    public async Task Update(List<T> entities)
     {
         using (TContext context = new TContext())
         {
@@ -72,15 +78,15 @@ public class EfEntityRepositoryBase<T, TContext> : IEntityRepository<T>
                 var updatedEntity = context.Entry(entity);
                 updatedEntity.State = EntityState.Modified;
             }
-            context.SaveChanges();
+            await context.SaveChangesAsync();
         }
     }
 
-    public T GetById(Guid id)
+    public async Task<T> GetById(Guid id)
     {
         using (TContext context = new TContext())
         {
-            return context.Set<T>().Find(id);
+            return await context.Set<T>().FindAsync(id);
         }
     }
 }
