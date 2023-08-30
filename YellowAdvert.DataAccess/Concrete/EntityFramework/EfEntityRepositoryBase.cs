@@ -5,11 +5,11 @@ using YellowAdvert.Entities.Base;
 
 namespace YellowAdvert.DataAccess.Concrete.EntityFramework;
 
-public class EfEntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEntity>
-        where TEntity : ModelBase
+public class EfEntityRepositoryBase<T, TContext> : IEntityRepository<T>
+        where T : ModelBase
         where TContext : DbContext, new()
 {
-    public void Add(TEntity entity)
+    public void Add(T entity)
     {
         using (TContext context = new TContext())
         {
@@ -18,35 +18,43 @@ public class EfEntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEnti
         }
     }
 
-    public void Delete(TEntity entity)
+    public void PermanentDelete(T entity)
     {
         using (TContext context = new TContext())
         {
-            //var deletedEntity = context.Remove(entity);
-            //deletedEntity.State = EntityState.Deleted;
+            var deletedEntity = context.Remove(entity);
+            deletedEntity.State = EntityState.Deleted;
+            context.SaveChanges();
+        }
+    }
+    public void SoftDelete(T entity)
+    {
+        using (TContext context = new TContext())
+        {
+            entity.Deleted = true;
             context.SaveChanges();
         }
     }
 
-    public TEntity Get(Expression<Func<TEntity, bool>> filter)
+    public T Get(Expression<Func<T, bool>> filter)
     {
         using (TContext context = new TContext())
         {
-            return context.Set<TEntity>().SingleOrDefault(filter);
+            return context.Set<T>().SingleOrDefault(filter);
         }
     }
 
-    public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
+    public List<T> GetAll(Expression<Func<T, bool>> filter = null)
     {
         using (TContext context = new TContext())
         {
             return filter == null
-                ? context.Set<TEntity>().ToList()
-                : context.Set<TEntity>().Where(filter).ToList();
+                ? context.Set<T>().ToList()
+                : context.Set<T>().Where(filter).ToList();
         }
     }
 
-    public void Update(TEntity entity)
+    public void Update(T entity)
     {
         using (TContext context = new TContext())
         {
@@ -55,12 +63,24 @@ public class EfEntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEnti
             context.SaveChanges();
         }
     }
-
-    public TEntity GetById(Guid id)
+    public void Update(List<T> entities)
     {
         using (TContext context = new TContext())
         {
-            return context.Set<TEntity>().Find(id);
+            foreach (var entity in entities)
+            {
+                var updatedEntity = context.Entry(entity);
+                updatedEntity.State = EntityState.Modified;
+            }
+            context.SaveChanges();
+        }
+    }
+
+    public T GetById(Guid id)
+    {
+        using (TContext context = new TContext())
+        {
+            return context.Set<T>().Find(id);
         }
     }
 }
