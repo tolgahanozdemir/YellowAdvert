@@ -13,8 +13,8 @@ namespace YellowAdvert.Business.Abstract
     {
         void Add(T entity);
         void Update(T entity);
-        void Delete(int id);
-        T GetById(int id);
+        void Delete(Guid id);
+        T GetById(Guid id);
         List<T> GetAll();
         List<T> GetByCondition(Expression<Func<T,bool>> expression);
 

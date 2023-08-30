@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\YellowAdvert.Business\YellowAdvert.Business.csproj" />
     <ProjectReference Include="..\YellowAdvert.DataAccess\YellowAdvert.DataAccess.csproj" />
   </ItemGroup>
 
