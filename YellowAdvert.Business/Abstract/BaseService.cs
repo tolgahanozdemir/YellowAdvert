@@ -15,7 +15,7 @@ namespace YellowAdvert.Business.Abstract
         private readonly IEntityRepository<T> _entityRepository;
         public BaseService(IEntityRepository<T> entityRepository)
         {
-            await _entityRepository = entityRepository;
+            _entityRepository = entityRepository;
         }
         public virtual async Task Add(T entity)
         {
@@ -40,7 +40,7 @@ namespace YellowAdvert.Business.Abstract
         }
         public virtual async Task<List<T>> GetByCondition(Expression<Func<T,bool>> expression)
         {
-            return await _entityRepository.GetAll(expression);
+            return await _entityRepository.Get(expression);
         }
 
     }
