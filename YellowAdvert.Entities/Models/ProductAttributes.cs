@@ -4,8 +4,8 @@ namespace YellowAdvert.Entities.Models;
 
 public class ProductAttributes : ModelBase
 {
-    public int ProductId { get; set; }
-    public int CategoryAttributeId { get; set; }
-    public int? CategoryAttributeValueId { get; set; }
+    public Guid ProductId { get; set; }
+    public Guid CategoryAttributeId { get; set; }
+    public Guid? CategoryAttributeValueId { get; set; }
     public string? CustomCategoryAttributeValue { get; set; }
 }

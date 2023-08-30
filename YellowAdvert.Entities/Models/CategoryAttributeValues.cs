@@ -4,6 +4,6 @@ namespace YellowAdvert.Entities.Models;
 
 public class CategoryAttributeValues : ModelBase
 {
-    public int CategoryAttributeId { get; set; }
+    public Guid CategoryAttributeId { get; set; }
     public string Value { get; set; }
 }
