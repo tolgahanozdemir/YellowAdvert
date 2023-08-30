@@ -1,3 +1,5 @@
+using FluentValidation.AspNetCore;
+using FluentValidation;
 using YellowAdvert.Business.DependencyResolver;
 using YellowAdvert.DataAccess.Abstract;
 using YellowAdvert.DataAccess.Concrete.EntityFramework;
@@ -11,6 +13,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 GenericDependencyResolver.ConfigureServices(builder.Services);
 builder.Services.AddStackExchangeRedisCache(options =>
 {
