@@ -12,7 +12,7 @@ using YellowAdvert.DataAccess.Concrete.EntityFramework;
 namespace YellowAdvert.DataAccess.Migrations
 {
     [DbContext(typeof(YellowAdvertEfContext))]
-    [Migration("20230830171043_m1")]
+    [Migration("20230903190430_m1")]
     partial class m1
     {
         /// <inheritdoc />
@@ -34,8 +34,8 @@ namespace YellowAdvert.DataAccess.Migrations
                     b.Property<DateTimeOffset>("CreateDate")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("Deleted")
                         .HasColumnType("bit");
@@ -73,8 +73,8 @@ namespace YellowAdvert.DataAccess.Migrations
                     b.Property<DateTimeOffset>("CreateDate")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("Deleted")
                         .HasColumnType("bit");
@@ -85,11 +85,18 @@ namespace YellowAdvert.DataAccess.Migrations
                     b.Property<Guid?>("LastUpdateUserId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("ProductAttributesId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Value")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryAttributeId");
+
+                    b.HasIndex("ProductAttributesId");
 
                     b.ToTable("CategoryAttributeValues");
                 });
@@ -106,8 +113,8 @@ namespace YellowAdvert.DataAccess.Migrations
                     b.Property<DateTimeOffset>("CreateDate")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("Deleted")
                         .HasColumnType("bit");
@@ -133,6 +140,8 @@ namespace YellowAdvert.DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryId");
+
                     b.ToTable("CategoryAttributes");
                 });
 
@@ -148,8 +157,8 @@ namespace YellowAdvert.DataAccess.Migrations
                     b.Property<DateTimeOffset>("CreateDate")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("Deleted")
                         .HasColumnType("bit");
@@ -172,7 +181,119 @@ namespace YellowAdvert.DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryId");
+
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("YellowAdvert.Entities.Models.ProductAttributes", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CategoryAttributeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("CategoryAttributeValueId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTimeOffset>("CreateDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CustomCategoryAttributeValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LastUpdateDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<Guid?>("LastUpdateUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductAttributes");
+                });
+
+            modelBuilder.Entity("YellowAdvert.Entities.Models.CategoryAttributeValues", b =>
+                {
+                    b.HasOne("YellowAdvert.Entities.Models.CategoryAttributes", "CategoryAttributes")
+                        .WithMany("CategoryAttributeValues")
+                        .HasForeignKey("CategoryAttributeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("YellowAdvert.Entities.Models.ProductAttributes", null)
+                        .WithMany("CategoryAttributeValues")
+                        .HasForeignKey("ProductAttributesId");
+
+                    b.Navigation("CategoryAttributes");
+                });
+
+            modelBuilder.Entity("YellowAdvert.Entities.Models.CategoryAttributes", b =>
+                {
+                    b.HasOne("YellowAdvert.Entities.Models.Category", "Category")
+                        .WithMany("CategoryAttributes")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("YellowAdvert.Entities.Models.Product", b =>
+                {
+                    b.HasOne("YellowAdvert.Entities.Models.Category", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("YellowAdvert.Entities.Models.ProductAttributes", b =>
+                {
+                    b.HasOne("YellowAdvert.Entities.Models.Product", "Product")
+                        .WithMany("ProductAttributes")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("YellowAdvert.Entities.Models.Category", b =>
+                {
+                    b.Navigation("CategoryAttributes");
+
+                    b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("YellowAdvert.Entities.Models.CategoryAttributes", b =>
+                {
+                    b.Navigation("CategoryAttributeValues");
+                });
+
+            modelBuilder.Entity("YellowAdvert.Entities.Models.Product", b =>
+                {
+                    b.Navigation("ProductAttributes");
+                });
+
+            modelBuilder.Entity("YellowAdvert.Entities.Models.ProductAttributes", b =>
+                {
+                    b.Navigation("CategoryAttributeValues");
                 });
 #pragma warning restore 612, 618
         }

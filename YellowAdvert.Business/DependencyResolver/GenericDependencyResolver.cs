@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YellowAdvert.Business.Abstract;
+using YellowAdvert.Business.Concrete;
 using YellowAdvert.DataAccess.Abstract;
 using YellowAdvert.DataAccess.Concrete.EntityFramework;
 using YellowAdvert.Entities.Base;
@@ -20,6 +22,10 @@ namespace YellowAdvert.Business.DependencyResolver
             services.AddScoped<IProductDal,EfProductDal>();
             services.AddScoped<IProductAttributesDal,EfProductAttributesDal>();
             services.AddScoped<DbContext,YellowAdvertEfContext>();
+
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IProductAttributeService, ProductAttributeService>();
+            services.AddScoped<IProductService, ProductService>();
         }
     }
 }
