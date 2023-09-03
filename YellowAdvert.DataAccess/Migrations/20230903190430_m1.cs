@@ -16,7 +16,7 @@ namespace YellowAdvert.DataAccess.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     ParentId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     HasSubCategory = table.Column<bool>(type: "bit", nullable: false),
                     Deleted = table.Column<bool>(type: "bit", nullable: false),
@@ -35,7 +35,7 @@ namespace YellowAdvert.DataAccess.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Type = table.Column<short>(type: "smallint", nullable: false),
                     IsRequired = table.Column<bool>(type: "bit", nullable: false),
@@ -62,7 +62,7 @@ namespace YellowAdvert.DataAccess.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
@@ -91,7 +91,7 @@ namespace YellowAdvert.DataAccess.Migrations
                     ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CategoryAttributeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CategoryAttributeValueId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    CustomCategoryAttributeValue = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CustomCategoryAttributeValue = table.Column<string>(type: "nvarchar(50)", nullable: true),
                     Deleted = table.Column<bool>(type: "bit", nullable: false),
                     LastUpdateUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -115,7 +115,7 @@ namespace YellowAdvert.DataAccess.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CategoryAttributeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Value = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Value = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     ProductAttributesId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     Deleted = table.Column<bool>(type: "bit", nullable: false),
                     LastUpdateUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
