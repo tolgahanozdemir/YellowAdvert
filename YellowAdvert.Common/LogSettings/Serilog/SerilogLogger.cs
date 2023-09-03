@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YellowAdvert.Common.AppsettingsConfiguration
+namespace YellowAdvert.Common.LogSettings.Serilog;
+
+public class SerilogLogger
 {
-    internal class CheckParameter
-    {
-    }
+
 }

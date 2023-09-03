@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YellowAdvert.Business", "Ye
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YellowAdvert.API", "YellowAdvert.API\YellowAdvert.API.csproj", "{C63576C3-0B5C-4AB4-ADE4-7D32685DD879}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YellowAdvert.Cqrs", "YellowAdvert.Cqrs\YellowAdvert.Cqrs.csproj", "{7B69E94F-5A29-4DFC-AED7-7FA105D61182}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YellowAdvert.Cqrs", "YellowAdvert.Cqrs\YellowAdvert.Cqrs.csproj", "{7B69E94F-5A29-4DFC-AED7-7FA105D61182}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YellowAdvert.Common", "YellowAdvert.Common\YellowAdvert.Common.csproj", "{CC642E1E-BC22-425A-BCE2-A9FA74721545}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{7B69E94F-5A29-4DFC-AED7-7FA105D61182}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B69E94F-5A29-4DFC-AED7-7FA105D61182}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B69E94F-5A29-4DFC-AED7-7FA105D61182}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC642E1E-BC22-425A-BCE2-A9FA74721545}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC642E1E-BC22-425A-BCE2-A9FA74721545}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC642E1E-BC22-425A-BCE2-A9FA74721545}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC642E1E-BC22-425A-BCE2-A9FA74721545}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
