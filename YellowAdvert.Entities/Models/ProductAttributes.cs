@@ -8,4 +8,6 @@ public class ProductAttributes : ModelBase
     public Guid CategoryAttributeId { get; set; }
     public Guid? CategoryAttributeValueId { get; set; }
     public string? CustomCategoryAttributeValue { get; set; }
+    public Product Product { get; set; }
+    public ICollection<CategoryAttributeValues> CategoryAttributeValues { get; set; }
 }

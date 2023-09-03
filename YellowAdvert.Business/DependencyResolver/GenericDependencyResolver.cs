@@ -18,6 +18,7 @@ namespace YellowAdvert.Business.DependencyResolver
         {
             services.AddScoped<ICategoryDal,EfCategoryDal>();
             services.AddScoped<IProductDal,EfProductDal>();
+            services.AddScoped<IProductAttributesDal,EfProductAttributesDal>();
             services.AddScoped<DbContext,YellowAdvertEfContext>();
         }
     }
