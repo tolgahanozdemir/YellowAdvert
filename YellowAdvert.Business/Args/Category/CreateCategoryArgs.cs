@@ -1,30 +1,23 @@
-﻿using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using YellowAdvert.Business.Args.Generic;
+﻿using YellowAdvert.Business.Args.Generic;
 using YellowAdvert.Entities.Models;
 
-namespace YellowAdvert.Business.Args
-{
-    public class CreateCategoryArgs:CreateArgs<Category>
-    {
-        public string Name { get; set; }
-        public Guid? ParentId { get; set; }
-        public bool HasSubCategory { get; set; }
-        public Guid CreatedBy { get; set; }
+namespace YellowAdvert.Business.Args;
 
-        public override Category New()
-        {
-            var category = new Category();
-            category.Id = Guid.NewGuid();
-            category.Name = Name;
-            category.ParentId = ParentId;
-            category.CreatedBy = CreatedBy;
-            category.HasSubCategory = HasSubCategory;
-            return category;
-        }
+public class CreateCategoryArgs:CreateArgs<Category>
+{
+    public string Name { get; set; }
+    public Guid? ParentId { get; set; }
+    public bool HasSubCategory { get; set; }
+    public Guid CreatedBy { get; set; }
+
+    public override Category New()
+    {
+        var category = new Category();
+        category.Id = Guid.NewGuid();
+        category.Name = Name;
+        category.ParentId = ParentId;
+        category.CreatedBy = CreatedBy;
+        category.HasSubCategory = HasSubCategory;
+        return category;
     }
 }

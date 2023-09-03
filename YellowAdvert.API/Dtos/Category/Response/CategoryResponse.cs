@@ -1,9 +1,8 @@
-﻿namespace YellowAdvert.API.Dtos.Category.Response
+﻿namespace YellowAdvert.API.Dtos.Category.Response;
+
+public class CategoryResponse
 {
-    public class CategoryResponse
-    {
-        public string Name { get; set; }
-        public Guid? ParentId { get; set; }
-        public bool HasSubCategory { get; set; }
-    }
+    public string Name { get; set; }
+    public Guid? ParentId { get; set; }
+    public bool HasSubCategory { get; set; }
 }

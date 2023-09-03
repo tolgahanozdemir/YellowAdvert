@@ -1,7 +1,6 @@
-﻿namespace YellowAdvert.API.Dtos.Request
+﻿namespace YellowAdvert.API.Dtos.Request;
+
+public class GetAllCategoriesRequest
 {
-    public class GetAllCategoriesRequest
-    {
-        public bool IsActiveOnly { get; set; }
-    }
+    public bool IsActiveOnly { get; set; }
 }

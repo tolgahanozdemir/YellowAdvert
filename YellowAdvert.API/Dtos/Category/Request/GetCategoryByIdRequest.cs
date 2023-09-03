@@ -1,7 +1,6 @@
-﻿namespace YellowAdvert.API.Dtos.Request
+﻿namespace YellowAdvert.API.Dtos.Request;
+
+public class GetCategoryByIdRequest
 {
-    public class GetCategoryByIdRequest
-    {
-        public Guid Id { get; set; }
-    }
+    public Guid Id { get; set; }
 }
